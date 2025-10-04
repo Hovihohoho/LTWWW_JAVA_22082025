@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="class1" class="com.example.tuan06.Bai1.model.exampleWithBeans.Class">
+        <property name="id" value="DHKTPM18ATT"/>
+        <property name="name" value="Dai Hoc 18 ATT" />
+    </bean>
+
+<!--    DÙNG 1 TRONG 2 CÁCH -->
+
+<!--    Dùng property thì thêm getter/setter-->
+<!--    cách hd: new Student();  setID(), setName(), setAclass()-->
+    <bean id="student1" class="com.example.tuan06.Bai1.model.exampleWithBeans.Student">
+        <property name="id" value="001"/>
+        <property name="name" value="Nguyen Van A"/>
+        <property name="aclass" ref="class1"></property>
+    </bean>
+
+<!--    Dùng constructor-arg thì thêm constructor trong class-->
+<!--    cách hd: new Student(id, name, aclass)-->
+<!--    <bean id="student2" class="com.example.tuan06.Bai1.model.exampleWithBeans.Student">-->
+<!--        <constructor-arg name="id" value="002"></constructor-arg>-->
+<!--        <constructor-arg name="name" value="To Phan Gia Bao"></constructor-arg>-->
+<!--        <constructor-arg name="aclass" ref="class1"></constructor-arg>-->
+<!--    </bean>-->
+
+
+<!--    VD Collection Injection-->
+    <bean id="address1" class="com.example.tuan06.Bai1.model.collectionExample.Address">
+        <property name="city" value="Brisbane"/>
+        <property name="country" value="Austrailia"/>
+        <property name="street" value="something" />
+    </bean>
+    <bean id="address2" class="com.example.tuan06.Bai1.model.collectionExample.Address">
+        <property name="city" value="TPHCM"/>
+        <property name="country" value="VietNam"/>
+        <property name="street" value="Phu Nhuan" />
+    </bean>
+
+    <bean id="person1" class="com.example.tuan06.Bai1.model.collectionExample.Person">
+        <property name="name" value="Alex"/>
+        <property name="adresses">
+            <list>
+                <ref bean="address1"></ref>
+                <ref bean="address2"></ref>
+            </list>
+        </property>
+        <property name="age" value="20"/>
+        <property name="emails">
+            <list>
+                <value>Alex@gamil.com</value>
+                <value>Hoho@gamil.com</value>
+            </list>
+        </property>
+    </bean>
+</beans>

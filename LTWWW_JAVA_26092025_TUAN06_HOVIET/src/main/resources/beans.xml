@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="address1" class="com.example.tuan06.Bai2.model.Address">
+        <property name="city" value="Brisbane"/>
+        <property name="country" value="Austrailia"/>
+        <property name="state" value="something" />
+    </bean>
+    <bean id="address2" class="com.example.tuan06.Bai2.model.Address">
+        <property name="city" value="TPHCM"/>
+        <property name="country" value="VietNam"/>
+        <property name="state" value="IDK" />
+    </bean>
+
+<!--    Bean sử dụng getter/setter-->
+    <bean id="employee1" class="com.example.tuan06.Bai2.model.Employee">
+        <property name="name" value="Hippy"/>
+        <property name="address" ref="address1"></property>
+        <property name="id" value="001"></property>
+    </bean>
+
+    <bean id="employee2" class="com.example.tuan06.Bai2.model.Employee">
+        <property name="name" value="Leo"/>
+        <property name="address" ref="address2"></property>
+        <property name="id" value="002"></property>
+    </bean>
+
+<!--    Bean sử dụng constructor-->
+    <bean id="employee3" class="com.example.tuan06.Bai2.model.Employee">
+<!--        Phải theo trình tự constructor-->
+        <constructor-arg name="id" value="003"/>
+        <constructor-arg name="name" value="Mona"/>
+        <constructor-arg name="address" ref="address2"/>
+    </bean>
+</beans>
